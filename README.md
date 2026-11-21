@@ -55,8 +55,8 @@ public/images/               # Furniture photography
 
 ## 🔄 CI / CD
 
-- **`.github/workflows/ci.yml`** — runs lint + production build on every push and pull request to `main`.
-- **`.github/workflows/deploy.yml`** — deploys to Vercel on pushes to `main`. Add these repository secrets to enable it: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`. Alternatively, connect the repo to Vercel's native Git integration for automatic deployments.
+- **`.github/workflows/ci.yml`** — runs lint + production build on every push and pull request to `main`. This is the continuous-integration workflow that validates every change before it lands.
+- **Continuous deployment** — connect the repo to **Vercel's native Git integration** (one click, no secrets to configure). Vercel automatically builds and deploys every push to `main` to production, so no extra deploy workflow is needed.
 
 ## 📝 Notes
 
