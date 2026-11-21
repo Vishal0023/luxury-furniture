@@ -20,6 +20,9 @@ permissions:
 jobs:
   deploy:
     name: Deploy to Vercel
+    # Skip unless Vercel credentials are configured, so pushes don't fail
+    # when the repo isn't connected to Vercel yet.
+    if: ${{ secrets.VERCEL_TOKEN != '' && secrets.VERCEL_PROJECT_ID != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
