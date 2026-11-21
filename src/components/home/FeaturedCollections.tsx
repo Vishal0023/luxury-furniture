@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
@@ -59,14 +59,19 @@ export default function FeaturedCollections() {
                 className={`group relative block overflow-hidden rounded-[2rem] bg-espresso ${col.aspect} lg:h-full`}
                 whileHover="hover"
               >
-                <motion.img
-                  src={col.image}
-                  alt={col.title}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover"
+                <motion.div
+                  className="absolute inset-0 h-full w-full"
                   whileHover={{ scale: 1.06 }}
                   transition={{ duration: 1.2, ease }}
-                />
+                >
+                  <Image
+                    src={col.image}
+                    alt={col.title}
+                    fill
+                    sizes="(max-width:768px) 100vw, 50vw"
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/15 to-transparent" />
                 <div className="absolute inset-0 flex flex-col justify-end p-8">
                   <span className="translate-y-4 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:opacity-100">

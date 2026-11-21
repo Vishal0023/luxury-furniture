@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus, ShoppingBag, X, Trash2 } from "lucide-react";
 import { useCart } from "@/hooks/use-cart";
@@ -82,12 +83,15 @@ export default function CartDrawer({
                         exit={{ opacity: 0, x: 40, transition: { duration: 0.2 } }}
                         className="flex gap-4"
                       >
-                        <img
-                          src={item.product.image}
-                          alt={item.product.name}
-                          loading="lazy"
-                          className="h-24 w-24 flex-shrink-0 rounded-lg bg-sand object-cover"
-                        />
+                        <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg bg-sand">
+                          <Image
+                            src={item.product.image}
+                            alt={item.product.name}
+                            fill
+                            sizes="96px"
+                            className="object-cover"
+                          />
+                        </div>
                         <div className="flex flex-1 flex-col">
                           <div className="flex justify-between gap-2">
                             <h3 className="text-sm font-medium leading-snug text-charcoal">

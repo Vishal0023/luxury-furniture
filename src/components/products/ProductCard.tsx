@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { Heart, Star, Plus } from "lucide-react";
 import type { Product } from "@/data/products";
@@ -35,12 +36,13 @@ export default function ProductCard({
       className="group relative flex flex-col"
     >
       <div className="relative overflow-hidden rounded-2xl bg-sand">
-        <div className="aspect-[4/5] overflow-hidden">
-          <img
+        <div className="relative aspect-[4/5] overflow-hidden">
+          <Image
             src={product.image}
             alt={product.name}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+            fill
+            sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, (max-width:1536px) 33vw, 25vw"
+            className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
           />
         </div>
 

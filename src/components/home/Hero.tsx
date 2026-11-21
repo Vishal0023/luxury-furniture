@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -39,11 +39,16 @@ export default function Hero() {
         style={{ y }}
         className="absolute inset-0 -z-10 bg-charcoal"
       >
-        <img
-          src="/images/hero.jpg"
-          alt="Luxury living room with a plush velvet sofa"
-          className="h-[120%] w-full object-cover"
-        />
+        <div className="relative h-[120%] w-full">
+          <Image
+            src="/images/hero.jpg"
+            alt="Luxury living room with a plush velvet sofa"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/10 to-charcoal/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/50 to-transparent" />
       </motion.div>

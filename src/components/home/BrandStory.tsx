@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
@@ -18,14 +19,16 @@ export default function BrandStory() {
       <div ref={ref} className="container-lux grid items-center gap-16 lg:grid-cols-2">
         {/* Image with parallax */}
         <div className="relative order-2 lg:order-1">
-          <div className="overflow-hidden rounded-[2rem] bg-sand">
-            <motion.img
-              src="/images/story-1.jpg"
-              alt="Aethel atelier and crafted furniture"
-              loading="lazy"
-              style={{ y }}
-              className="aspect-[4/5] w-full object-cover"
-            />
+          <div className="relative overflow-hidden rounded-[2rem] bg-sand">
+            <motion.div style={{ y }} className="h-[115%] w-full">
+              <Image
+                src="/images/story-1.jpg"
+                alt="Aethel atelier and crafted furniture"
+                fill
+                sizes="(max-width:1024px) 100vw, 50vw"
+                className="h-full w-full object-cover"
+              />
+            </motion.div>
           </div>
           <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-charcoal px-7 py-6 text-cream shadow-xl md:block">
             <p className="font-serif text-4xl">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -41,14 +42,19 @@ export default function FeaturedCategories() {
                 whileHover="hover"
               >
                 <div className="aspect-[4/3] overflow-hidden">
-                  <motion.img
-                    src={cat.image}
-                    alt={cat.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
+                  <motion.div
+                    className="h-full w-full"
                     whileHover={{ scale: 1.08 }}
                     transition={{ duration: 1.1, ease }}
-                  />
+                  >
+                    <Image
+                      src={cat.image}
+                      alt={cat.name}
+                      fill
+                      sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
+                      className="h-full w-full object-cover"
+                    />
+                  </motion.div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/10 to-transparent" />
                 <div className="absolute inset-0 flex flex-col justify-end p-7">
