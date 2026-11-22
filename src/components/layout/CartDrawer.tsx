@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus, ShoppingBag, X, Trash2 } from "lucide-react";
@@ -159,9 +160,9 @@ export default function CartDrawer({
                 <p className="mt-1 text-xs text-stone">
                   Shipping & taxes calculated at checkout.
                 </p>
-                <button type="button" className="btn-primary mt-4 w-full py-3.5">
+                <Link href="/checkout" className="btn-primary mt-4 w-full py-3.5">
                   Proceed to Checkout
-                </button>
+                </Link>
                 <button
                   type="button"
                   onClick={clearCart}

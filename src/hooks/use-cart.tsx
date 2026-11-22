@@ -4,6 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -30,9 +31,37 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
+const CART_KEY = "aethel:cart";
+const WISHLIST_KEY = "aethel:wishlist";
+
+function loadJSON<T>(key: string, fallback: T): T {
+  if (typeof window === "undefined") return fallback;
+  try {
+    const raw = window.localStorage.getItem(key);
+    return raw ? (JSON.parse(raw) as T) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [wishlist, setWishlist] = useState<string[]>([]);
+
+  // Restore from localStorage after mount (keeps SSR/hydration stable).
+  useEffect(() => {
+    setItems(loadJSON<CartItem[]>(CART_KEY, []));
+    setWishlist(loadJSON<string[]>(WISHLIST_KEY, []));
+  }, []);
+
+  // Persist whenever state changes.
+  useEffect(() => {
+    window.localStorage.setItem(CART_KEY, JSON.stringify(items));
+  }, [items]);
+
+  useEffect(() => {
+    window.localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
+  }, [wishlist]);
 
   const addToCart = useCallback((product: Product, qty = 1) => {
     setItems((prev) => {

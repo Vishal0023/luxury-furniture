@@ -7,7 +7,7 @@ A visually stunning, luxury furniture brand website built with **Next.js (App Ro
 - **Premium luxury aesthetic** — warm neutral palette, elegant serif typography, generous whitespace.
 - **Homepage** — animated Hero with parallax, Featured Categories, Trending Products, Brand Story, Featured Collections (asymmetric grid), Why Choose Us, Testimonials slider and Newsletter.
 - **Shop page** — live product search, category filtering, sorting, deep-linked filters (`?category=…`, `?q=…`), fully server-rendered for SEO.
-- **Shopping interactions** — wishlist toggle, add-to-cart, cart counter, slide-in cart & wishlist drawers (React state only).
+- **Shopping interactions** — wishlist toggle, add-to-cart, cart counter, slide-in cart & wishlist drawers, and a **multi-step checkout** (Contact → Delivery → Payment → Confirmation), all with React state. Cart & wishlist persist in `localStorage`.
 - **Animations** — scroll-triggered reveals, staggered product cards, text reveals, parallax, magnetic buttons, animated counters, custom cursor and smooth scrolling via Lenis.
 - **Accessibility & performance** — `prefers-reduced-motion` support, responsive design, lazy-loaded images, semantic HTML, SEO metadata.
 
@@ -44,6 +44,7 @@ src/
 │   ├── home/                # Homepage sections
 │   ├── products/            # Product card & grid
 │   ├── shop/                # Shop page logic (search/filter/sort)
+│   ├── checkout/            # Multi-step checkout flow
 │   ├── providers/           # App providers (cart, smooth scroll, cursor)
 │   └── ui/                  # Reveal, MagneticButton, AnimatedCounter, Cursor
 ├── data/                    # Static products & categories
